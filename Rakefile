@@ -9,7 +9,7 @@ begin
     gem.description = %Q{Uses NextBus data.}
     gem.email = "scotty.hyndman@gmail.com"
     gem.homepage = "http://github.com/shyndman/ttc-gps"
-    gem.authors = ["shyndman"]
+    gem.authors = ["Scott Hyndman"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.add_development_dependency "geokit", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
