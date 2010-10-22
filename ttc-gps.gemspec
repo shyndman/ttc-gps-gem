@@ -24,8 +24,13 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/ttc-gps.rb",
+     "lib/ttc-gps/constants.rb",
+     "lib/ttc-gps/extensions.rb",
+     "lib/ttc-gps/models.rb",
+     "lib/ttc-gps/service.rb",
      "test/helper.rb",
-     "test/test_ttc-gps.rb"
+     "test/test_ttc-gps.rb",
+     "ttc-gps.gemspec"
   ]
   s.homepage = %q{http://github.com/shyndman/ttc-gps}
   s.rdoc_options = ["--charset=UTF-8"]
