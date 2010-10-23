@@ -27,18 +27,23 @@ module TTC
     end
     
     def get_vehicle_locations route_tag
+      res = {}
       vehicles = []
       
       open TTC::UrlTemplates::STREET_CAR_LOCATIONS % route_tag do |file|
         route_xml = REXML::Document.new file
         root = route_xml.root
-
         root.elements.each 'vehicle' do |element|
           vehicles << TTC::Vehicle::parse_element(element)
         end
+        
+        if root.elements['lastTime']
+          res['last_time'] = Integer(root.elements['lastTime'].attributes['time'])
+        end
       end
       
-      vehicles
+      res['vehicles'] = vehicles
+      res
     end
   end
 end

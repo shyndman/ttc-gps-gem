@@ -7,11 +7,10 @@ module Geokit
       ret
     end
     
-    def expand_by_radius! units
-      sw.lat = sw.lat - units
-      sw.lng = sw.lng - units
-      ne.lon = ne.lon + units
-      ne.lng = ne.lng + units
+    def expand_by_radius! amount
+      hyp = (amount*amount * 2)**.5
+      sw = sw.endpoint 225, hyp
+      ne = ne.endpoint 45, hyp
     end
     
     def to_json *args
