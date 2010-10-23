@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'geokit'
-
 # Extensions to Geokit.
 module Geokit
   class Bounds
@@ -16,6 +13,22 @@ module Geokit
       ne.lon = ne.lon + units
       ne.lng = ne.lng + units
     end
+    
+    def to_json *args
+      {
+        'sw' => @sw,
+        'ne' => @ne
+      }.to_json(*args)
+    end
+  end
+  
+  class LatLng
+    def to_json *args
+      {
+        'lat' => @lat,
+        'lng' => @lng
+      }.to_json(*args)
+    end
   end
 end
 
@@ -23,9 +36,17 @@ module TTC
   # <vehicle lon='-79.3582' secsSinceReport='7' predictable='true' speedKmHr='0.0' dirTag='504_westbound' id='4142' heading='54' lat='43.677082' routeTag='504'/>
   class Vehicle
     attr_accessor :id, :route, :position, :heading, :dir, :secs_since_report, :predictable
-
-    def to_s
-      inspect
+    
+    def to_json *args
+      {
+        'id' => @id,
+        'route' => @route,
+        'position' => @position,
+        'heading' => @heading,
+        'dir' => @dir,
+        'secs_since_report' => @secs_since_report,
+        'predictable' => @predictable
+      }.to_json(*args)
     end
 
     # Parses an XML element into a Vehicle instance
@@ -35,11 +56,7 @@ module TTC
       v = Vehicle.new
       v.id = attrs["id"]
       v.route = attrs["routeTag"]
-      
-      lon = Float(attrs["lon"])
-      lat = Float(attrs["lat"])
-      v.position = Geokit::LatLng.new(lat, lon)
-      
+      v.position = Geokit::LatLng.new(Float(attrs["lat"]), Float(attrs["lon"]))      
       v.heading = Float(attrs["heading"])
       v.dir = attrs["dirTag"]
       v.secs_since_report = Integer(attrs["secsSinceReport"])
@@ -86,8 +103,15 @@ module TTC
       get_closest_stops[0]
     end
     
-    def to_s
-      inspect
+    #:tag, :title, :bounds, :stop_map, :directions
+    
+    def to_json *args
+      {
+        'tag' => @tag,
+        'title' => @title,
+        'bounds' => @bounds,
+        'directions' => @directions
+      }.to_json(*args)
     end
     
     def Route.parse_element element
@@ -96,16 +120,9 @@ module TTC
       r = Route.new
       r.tag = attrs["tag"]
       r.title = attrs["title"]
-      
-      lat_min = Float(attrs["latMin"])
-      lat_max = Float(attrs["latMax"])
-      lon_min = Float(attrs["lonMin"])
-      lon_max = Float(attrs["lonMax"])
-      
       r.bounds = Geokit::Bounds.new(
-        Geokit::LatLng.new(lat_min, lon_min), 
-        Geokit::LatLng.new(lat_max, lon_max))
-      
+        Geokit::LatLng.new(Float(attrs["latMin"]), Float(attrs["lonMin"])), 
+        Geokit::LatLng.new(Float(attrs["latMax"]), Float(attrs["lonMax"])))
       r
     end
   end
@@ -114,8 +131,14 @@ module TTC
   class Stop
     attr_accessor :id, :title, :position, :dir, :tag
     
-    def to_s
-      inspect
+    def to_json *args
+      {
+        'id' => @id,
+        'title' => @title,
+        'position' => @position,
+        'dir' => @dir,
+        'tag' => @tag
+      }.to_json(*args)
     end
     
     # Parses an XML element into a Stop instance
@@ -125,9 +148,7 @@ module TTC
       s = Stop.new
       s.id = attrs["stopId"]
       s.title = attrs["title"]
-      lat = Float(attrs["lat"])
-      lon = Float(attrs["lon"])
-      s.position = Geokit::LatLng.new(lat, lon)
+      s.position = Geokit::LatLng.new(Float(attrs["lat"]), Float(attrs["lon"]))
       s.dir = attrs["dirTag"]
       s.tag = attrs["tag"]
       s
