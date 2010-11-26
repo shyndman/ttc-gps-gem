@@ -8,7 +8,7 @@ module Geokit
     end
     
     def expand_by_radius! amount
-      hyp = (amount*amount * 2)**.5
+      hyp = (amount*amount * 2)**0.5
       sw = sw.endpoint 225, hyp
       ne = ne.endpoint 45, hyp
     end
