@@ -128,7 +128,7 @@ module TTC
   
   # <stop lon='-79.5407149' title='Lake Shore Blvd W At 39th' tag='lake39th_e' dirTag='501_eastbound' stopId='6503' lat='43.5928211'/>
   class Stop
-    attr_accessor :id, :title, :position, :dir, :tag
+    attr_accessor :id, :title, :position, :dir, :tag, :route_id
     
     def to_json *args
       {
@@ -136,7 +136,8 @@ module TTC
         'title' => @title,
         'position' => @position,
         'dir' => @dir,
-        'tag' => @tag
+        'tag' => @tag,
+        'routeId' => @route_id
       }.to_json(*args)
     end
     
