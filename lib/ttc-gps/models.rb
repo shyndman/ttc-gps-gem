@@ -34,7 +34,7 @@ end
 module TTC
   # <vehicle lon='-79.3582' secsSinceReport='7' predictable='true' speedKmHr='0.0' dirTag='504_westbound' id='4142' heading='54' lat='43.677082' routeTag='504'/>
   class Vehicle
-    attr_accessor :id, :route, :position, :heading, :dir, :secs_since_report, :predictable
+    attr_accessor :id, :route, :position, :heading, :dir, :secs_since_report, :ts, :predictable
     
     def to_json *args
       {
@@ -43,8 +43,7 @@ module TTC
         'position' => @position,
         'heading' => @heading,
         'dir' => @dir,
-        'secs_since_report' => @secs_since_report,
-        'predictable' => @predictable
+        'ts' => @ts
       }.to_json(*args)
     end
 
