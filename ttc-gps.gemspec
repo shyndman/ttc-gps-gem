@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ttc-gps}
-  s.version = "0.6.0"
+  s.version = "0.7.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Scott Hyndman"]
-  s.date = %q{2010-11-26}
+  s.date = %q{2011-01-02}
   s.description = %q{Uses NextBus data.}
   s.email = %q{scotty.hyndman@gmail.com}
   s.extra_rdoc_files = [
