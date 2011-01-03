@@ -1,8 +1,11 @@
-= ttc-gps
+= ttc-gps-gem
 
 A service for consuming TTC streetcar GPS data.
 
-== Note on Patches/Pull Requests
+The project is far from complete, and is lacking cohesiveness in a number of ways. 
+There are unused methods all over the place, and no automated tests in place.
+
+=== Note on Patches/Pull Requests
  
 * Fork the project.
 * Make your feature addition or bug fix.
@@ -12,6 +15,6 @@ A service for consuming TTC streetcar GPS data.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-== Copyright
+=== Copyright
 
 Copyright (c) 2011 Scott Hyndman. See LICENSE for details.
