@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
     "test/test_ttc-gps.rb",
     "ttc-gps.gemspec"
   ]
-  s.homepage = %q{http://github.com/shyndman/ttc-gps}
+  s.homepage = %q{http://github.com/shyndman/ttc-gps-gem}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{A service for consuming TTC streetcar GPS data.}

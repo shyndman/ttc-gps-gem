@@ -8,7 +8,7 @@ begin
     gem.summary = %Q{A service for consuming TTC streetcar GPS data.}
     gem.description = %Q{Uses NextBus data.}
     gem.email = "scotty.hyndman@gmail.com"
-    gem.homepage = "http://github.com/shyndman/ttc-gps"
+    gem.homepage = "http://github.com/shyndman/ttc-gps-gem"
     gem.authors = ["Scott Hyndman"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.add_development_dependency "geokit", ">= 0"
