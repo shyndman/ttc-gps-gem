@@ -1,6 +1,6 @@
 = ttc-gps
 
-Description goes here.
+A service for consuming TTC streetcar GPS data.
 
 == Note on Patches/Pull Requests
  
@@ -14,4 +14,4 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2010 shyndman. See LICENSE for details.
+Copyright (c) 2011 Scott Hyndman. See LICENSE for details.
